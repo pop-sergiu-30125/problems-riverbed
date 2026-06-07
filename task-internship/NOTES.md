@@ -29,7 +29,7 @@ Pentru fiecare bug, scrie 2-3 propoziții:
 - **Decizii de design:** (ce-ai considerat? ce ai ales și de ce?)
 - **Cazuri edge pe care le-ai acoperit:**
 - **Teste adăugate:** primul test verifică dacă filtrarea este executată cum trebuie, iar al doilea test verifică dacă, după filtrare, sunt ignorate și evenimentele care au fost șterse.
-
+Al treilea și al patrulea test sunt pentru cazurile speciale în care se returnează toate evenimentele unui utilizator la neintroducerea unei date, și eroarea respectivă în cazul în care user-ul nu există
 ---
 
 ## 3. Folosirea AI-ului

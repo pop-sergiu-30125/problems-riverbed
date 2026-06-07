@@ -61,12 +61,13 @@ class Storage:
         event.deleted_at = datetime.now(timezone.utc)
         return event
 
-    def get_events_by_user(self, user_id: int, since: datetime) -> list[Event]:
+    def get_events_by_user(self, user_id: int, since: Optional[datetime] = None) -> list[Event]: 
         all_events = list(self._events.values())
         all_events_filtered = []
         for event_i in all_events:
-            if event_i.deleted_at is None and event_i.created_at >= since and event_i.user_id == user_id:
-                all_events_filtered.append(event_i)
+            if event_i.deleted_at is None and event_i.user_id == user_id:
+                if since is None or event_i.created_at >= since:
+                    all_events_filtered.append(event_i)
         return all_events_filtered     
 
 

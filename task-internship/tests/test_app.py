@@ -10,7 +10,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from datetime import datetime, timezone
-
+from typing import Optional
 from app.main import app
 from app.storage import storage
 
@@ -210,4 +210,16 @@ def test_get_user_events_since_currentdate_after_delete_events(client):
     events = response2.json()
    
     assert len(events) == 0
+
+def test_get_user_events_since_absent(client, user):
+    for _ in range(3):
+        client.post("/events", json={"user_id": user["id"], "event_type": "click"})
+    
+    response = client.get(f"/users/{user['id']}/events")
+    assert response.status_code == 200
+    assert len(response.json()) == 3
+
+def test_get_user_events_missing_user(client):
+    response = client.get("/users/21/events")
+    assert response.status_code == 404
 
