@@ -54,7 +54,7 @@ raise HTTPException(status_code=404, detail="Event already deleted") more tests 
 (Lista scurtă, 3-5 puncte. Arată-ne că ai văzut limitele actuale.)
 - o centralizare/automatizare a acelor evenimente ale utilizatorilor, adică acesta să poată prima data executa o operație de login...
 - tot aici, partea in care ne conectăm la un cont, și atunci când facem post la un eveniment, să il facem pe contul conectat (la fișiere json nu mai introducem user_id)
-- 
+- introducere mai multe layere de acces (user, admin)
 
 ---
 
